@@ -28,6 +28,9 @@ spec:
     - jsonPath: .spec.username
       name: Username
       type: string
+    - jsonPath: .metadata.name
+      name: Pool Name
+      type: string
     - jsonPath: .spec.poolSize
       name: Pool Size
       type: string
@@ -71,7 +74,7 @@ spec:
                 description: 'Information regarding secret creation. Exposed keys:
                   `CONNECTIONPOOL_HOST`, `CONNECTIONPOOL_PORT`, `CONNECTIONPOOL_DATABASE`,
                   `CONNECTIONPOOL_USER`, `CONNECTIONPOOL_PASSWORD`, `CONNECTIONPOOL_SSLMODE`,
-                  `CONNECTIONPOOL_DATABASE_URI`'
+                  `CONNECTIONPOOL_DATABASE_URI`, `CONNECTIONPOOL_NAME`'
                 properties:
                   annotations:
                     additionalProperties:

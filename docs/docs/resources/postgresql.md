@@ -282,6 +282,7 @@ The output is similar to the following:
 
 ```{ .json .no-copy }
 {
+  "NAME": "pg-connection-pool"
   "DATABASE_URI": "postgres://pg-service-user:<secret-password>@pg-sample-you-project.aivencloud.com:13040/pg-connection-pool?sslmode=require",
   "PGDATABASE": "pg-database-sample",
   "PGHOST": "pg-sample-your-project.aivencloud.com",

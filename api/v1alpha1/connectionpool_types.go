@@ -25,6 +25,11 @@ type ConnectionPoolSpec struct {
 	// Name of the service user used to connect to the database
 	Username string `json:"username"`
 
+	// +kubebuilder:validation:MaxLength=63
+	// +kubebuilder:validation:Format="^[a-zA-Z0-9_-]*$"
+	// Target project.
+	PoolName string `json:"name"`
+
 	// +kubebuilder:validation:Min=1
 	// +kubebuilder:validation:Max=1000
 	// Number of connections the pool may create towards the backend server
@@ -35,7 +40,7 @@ type ConnectionPoolSpec struct {
 	PoolMode string `json:"poolMode,omitempty"`
 
 	// Information regarding secret creation.
-	// Exposed keys: `CONNECTIONPOOL_HOST`, `CONNECTIONPOOL_PORT`, `CONNECTIONPOOL_DATABASE`, `CONNECTIONPOOL_USER`, `CONNECTIONPOOL_PASSWORD`, `CONNECTIONPOOL_SSLMODE`, `CONNECTIONPOOL_DATABASE_URI`
+	// Exposed keys: `CONNECTIONPOOL_HOST`, `CONNECTIONPOOL_PORT`, `CONNECTIONPOOL_DATABASE`, `CONNECTIONPOOL_USER`, `CONNECTIONPOOL_PASSWORD`, `CONNECTIONPOOL_SSLMODE`, `CONNECTIONPOOL_DATABASE_URI`, `CONNECTIONPOOL_NAME`
 	ConnInfoSecretTarget ConnInfoSecretTarget `json:"connInfoSecretTarget,omitempty"`
 
 	// Authentication reference to Aiven token in a secret
@@ -56,6 +61,7 @@ type ConnectionPoolStatus struct {
 // +kubebuilder:printcolumn:name="Project",type="string",JSONPath=".spec.project"
 // +kubebuilder:printcolumn:name="Database",type="string",JSONPath=".spec.databaseName"
 // +kubebuilder:printcolumn:name="Username",type="string",JSONPath=".spec.username"
+// +kubebuilder:printcolumn:name="Pool Name",type="string",JSONPath=".metadata.name"
 // +kubebuilder:printcolumn:name="Pool Size",type="string",JSONPath=".spec.poolSize"
 // +kubebuilder:printcolumn:name="Pool Mode",type="string",JSONPath=".spec.poolMode"
 type ConnectionPool struct {

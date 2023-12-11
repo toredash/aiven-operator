@@ -164,6 +164,7 @@ func TestConnectionPool(t *testing.T) {
 	assert.NotEmpty(t, secret.Data["CONNECTIONPOOL_PASSWORD"])
 	assert.NotEmpty(t, secret.Data["CONNECTIONPOOL_SSLMODE"])
 	assert.NotEmpty(t, secret.Data["CONNECTIONPOOL_DATABASE_URI"])
+	assert.NotEmpty(t, secret.Data["CONNECTIONPOOL_NAME"])
 
 	// We need to validate deletion,
 	// because we can get false positive here:
